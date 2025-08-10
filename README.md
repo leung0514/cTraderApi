@@ -1,22 +1,23 @@
-# OpenAPI.Net
+# OpenAPI.Net (Rebuild for .NET 8)
 
-[![NuGet version (cTrader.OpenAPI.Net)](https://buildstats.info/nuget/cTrader.OpenAPI.Net)](https://www.nuget.org/packages/cTrader.OpenAPI.Net/)
+This is a rebuild of the [original cTrader OpenAPI.Net library](https://github.com/spotware/OpenAPI.Net) upgraded to .NET 8.
 
-cTrader Open API .NET Rx library
+## Purpose of this Project
 
-This library allows you to easily use and integrate cTrader Open API on your .NET applications.
+This repository was created to address a specific issue in the original [cTrader.OpenAPI.Net NuGet package](https://www.nuget.org/packages/cTrader.OpenAPI.Net/) which is missing the `ProtoOAGetPositionUnrealizedPnLReq` message type. This issue has existed for over a year without being fixed, so this project rebuilds the package with the missing type included and also upgrades from .NET 6 to .NET 8.
 
-Its written by using RX streams so it makes API usage very easy and allows you to do a lot with few lines of code.
+## Original Project
 
-It uses channels and array pools to avoid too many allocations, we tried our best to make it as efficient as possible.
+For the complete original project including samples and documentation, please visit:
+- Original Repository: [https://github.com/spotware/OpenAPI.Net](https://github.com/spotware/OpenAPI.Net)
+- Documentation: [https://spotware.github.io/OpenAPI.Net/](https://spotware.github.io/OpenAPI.Net/)
 
-Current version of library is targets .NET 6, so you can't use it on .NET framework apps.
+## Changes in this Project
 
-Please check the samples, we have some good samples for all kinds of .NET apps.
-
-Feel free to fork and improve it!
-
-Documentation: [https://spotware.github.io/OpenAPI.Net/](https://spotware.github.io/OpenAPI.Net/)
+- Included `ProtoOAGetPositionUnrealizedPnLReq` message type that exists in the source but was missing from the published NuGet package
+- Upgraded from .NET 6 to .NET 8
+- Maintained compatibility with the original API
+- Focused only on the core library functionality
 
 ## Dependencies
 
@@ -24,6 +25,9 @@ Documentation: [https://spotware.github.io/OpenAPI.Net/](https://spotware.github
 * [Reactive](https://github.com/dotnet/reactive)
 * [websocket-client](https://github.com/Marfusios/websocket-client)
 
-## Licence
+## License
 
-Licenced under the [MIT licence](LICENSE).
+Licensed under the [MIT license](LICENSE).
+
+Copyright (c) 2021 Spotware  
+Copyright (c) 2025 leung0514
