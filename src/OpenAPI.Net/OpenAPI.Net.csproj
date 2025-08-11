@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.20.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8" />
     <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="Websocket.Client" Version="4.4.43" />
   </ItemGroup>
