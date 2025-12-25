@@ -14,7 +14,7 @@ namespace OpenAPI.Net.Services;
 
 public class OpenClientService(
     OpenClient client,
-    LogonInfo logonInfo,
+    ConnectionInfo logonInfo,
     ILogger logger,
     int timeoutSecond) : IOpenClientService
 {
