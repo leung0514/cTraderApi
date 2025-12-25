@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\OpenAPI.Net\OpenAPI.Net.csproj" />
+    <ProjectReference Include="..\OpenAPI.Net\OpenAPI.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
