@@ -9,7 +9,7 @@
     <PackageTags>cTrader, Open API, Spotware, cTrader</PackageTags>
     <Description>A .NET 8 RX library for cTrader Open API with all message types included. Fork of the original cTrader.OpenAPI.Net package.</Description>
     <PackageId>cTrader.OpenAPI.Net8</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Platforms>AnyCPU</Platforms>
     <Company>leung0514</Company>
     <Authors>Spotware, leung0514</Authors>
