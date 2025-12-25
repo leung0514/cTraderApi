@@ -1,0 +1,12 @@
+{
+    "LogonInfo": {
+        "Mode": "Live",
+        "ClientId": "YOUR_CLIENT_ID",
+        "ClientSecret": "YOUR_CLIENT_SECRET",
+        "AccountId": 0,
+        "TimeoutSecond": 10,
+        "Token": {
+            "RefreshToken": "YOUR_REFRESH_TOKEN"
+        }
+    }
+}
