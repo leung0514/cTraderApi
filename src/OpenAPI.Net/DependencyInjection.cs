@@ -12,7 +12,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddOpenClientService(
     this IServiceCollection services,
-    LogonInfo logonInfo,
+    ConnectionInfo logonInfo,
     int timeoutSecond = 10)
     {
         services.AddTransient(provider =>

@@ -14,7 +14,7 @@ namespace OpenAPI.Net.Services;
 
 public class OpenClientService(
     OpenClient client,
-    LogonInfo logonInfo,
+    ConnectionInfo logonInfo,
     ILogger logger,
     int timeoutSecond) : IOpenClientService
 {
@@ -24,9 +24,9 @@ public class OpenClientService(
     {
         await LogoutAsync();
 
-        if (client?.IsTerminated == false)        
+        if (client?.IsTerminated == false)
             client.Dispose();
-        
+
     }
 
     public async Task LogoutAsync(CancellationToken cancellationToken = default)
@@ -36,6 +36,42 @@ public class OpenClientService(
             PayloadType = ProtoOAPayloadType.ProtoOaAccountLogoutReq
         };
         await client.SendMessage(logoutReq);
+    }
+
+    public async Task<Token?> RefreshTokenAsync(CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            await client.Connect();
+            var appAuthReq = new ProtoOAApplicationAuthReq()
+            {
+                ClientId = logonInfo.ClientId,
+                ClientSecret = logonInfo.ClientSecret
+            };
+            var appAuthRes = await SendAsync<ProtoOAApplicationAuthReq, ProtoOAApplicationAuthRes>(appAuthReq, cancellationToken);
+
+            var refreshReq = new ProtoOARefreshTokenReq
+            {
+                RefreshToken = logonInfo.Token.RefreshToken
+            };
+            var refreshRes = await SendAsync<ProtoOARefreshTokenReq, ProtoOARefreshTokenRes>(refreshReq, cancellationToken);
+
+            if (!refreshRes.HasAccessToken) return null;
+
+            return new Token
+            {
+                AccessToken = refreshRes.AccessToken,
+                RefreshToken = refreshRes.RefreshToken,
+                ExpiresIn = DateTimeOffset.UtcNow.AddSeconds(refreshRes.ExpiresIn),
+                TokenType = refreshRes.TokenType
+            };
+
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, ex.Message);
+            throw;
+        }
     }
 
     public async Task<Exception?> LogonAsync(CancellationToken cancellationToken = default)
@@ -52,7 +88,7 @@ public class OpenClientService(
             var accAuthReq = new ProtoOAAccountAuthReq
             {
                 CtidTraderAccountId = logonInfo.AccountId,
-                AccessToken = logonInfo.AccessToken
+                AccessToken = logonInfo.Token.AccessToken
             };
 
 

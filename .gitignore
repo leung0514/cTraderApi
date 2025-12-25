@@ -344,3 +344,4 @@ healthchecksdb
 /src/Blazor.WebSocket.Sample/appsettings.Development.json
 /src/ASP.NET.Sample/appsettings-dev.json
 /src/Notebook.Sample/credentials.json
+config.json
